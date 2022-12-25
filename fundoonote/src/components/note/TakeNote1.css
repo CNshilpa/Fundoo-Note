@@ -1,0 +1,44 @@
+.takeNoteOne-main{
+  width: 100vw;
+  height: 10vh;
+  border: 1px solid gray;
+  border-radius: 1px;
+  flex-direction: row;
+  align-items: flex-end; 
+  border: none;
+}
+.takeNoteOne-mainTwo{
+  display: flex;
+  width: 700px;
+  height: 50px;
+  border: 1px solid gray; 
+  margin-top: -2.5%;
+  margin-left: 25%;
+  box-shadow: 0px 0px 5px grey;
+  background-clip: padding-box;
+  border-radius: 10px;
+  background-color: rgb(244, 244, 250);
+}
+.takeNoteOne{
+  /* width: 700px; */
+  border: none;
+  border-color: antiquewhite;
+  font-size: medium;
+  background: transparent;
+  outline: none;
+  font-variant-ligatures: none;
+  margin: 14px auto;
+  margin-left: 10px;
+}
+.takeNoteOne-checkBox{
+ margin-left: -250px;
+ margin-top: 0.5%;
+}
+.takeNoteOne-brush-icon{
+  margin-left: -130px;
+  margin-top: -65%;
+}
+.takeNoteOne-image-icon{
+  margin-left: -30px;
+  margin-top: -60%;
+}

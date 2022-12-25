@@ -1,0 +1,75 @@
+.takeNoteTwoMain{
+    width: 50vw;
+    height: 20vh;
+    border: 1px solid gray;
+    align-items: center;
+    margin-left: 25%;
+    margin-top: -2%;
+    box-shadow: 0px 0px 5px grey;
+    border-radius: 10px;
+    background-color: rgb(244, 244, 250);
+    flex-direction: column;
+    outline: none;
+}
+.takeNoteTwo-title{
+    width: 700px;
+    border: none;
+    border-color: antiquewhite;
+    font-size: medium;
+    background: transparent;
+    outline: none;
+    font-variant-ligatures: none;
+    margin: 20px auto;
+    margin-left: 10px;
+}
+.takeNoteTwo-takeNote{
+    width: 700px;
+    border: none;
+    border-color: antiquewhite;
+    font-size: medium;
+    background: transparent;
+    outline: none;
+    font-variant-ligatures: none;
+    margin: 5px auto;
+    margin-left: 10px;
+}
+.takeNoteTwo-icons{
+    justify-content: space-evenly;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 660px; 
+    
+}
+.takeNoteTwo-pin-icon{
+    margin-top: -12%;
+    margin-left: 90%;
+}
+.takeNoteTwo-notification-icon{
+    margin-right: 90%;
+    margin-top: 10%;
+}
+.takeNoteTwo-group-icon{
+    margin-right: 70%;
+    margin-top: -4.5%;
+}
+.takeNoteTwo-color-icon{
+    margin-right: 50%;
+    margin-top: -4.5%;  
+}
+.takeNoteTwo-image-icons{
+    margin-right: 30%;
+    margin-top: -4.5%;  
+}
+.takeNoteTwo-archive-icon{
+    margin-right: 10%;
+    margin-top: -4.5%; 
+}
+.takeNoteTwo-more-icon{
+    margin-right: -10%;
+    margin-top: -4.6%; 
+}
+.takeNoteTwo-button{
+    margin-right: -90%;
+    margin-top: -6%;
+    color: aliceblue;
+}

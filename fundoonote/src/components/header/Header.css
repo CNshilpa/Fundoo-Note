@@ -1,0 +1,76 @@
+#header-main{
+  width: 100vw;
+  height: 10vh;
+  border: 1px solid gray;
+  border-radius: 1px;
+  flex-direction: row;
+  align-items: center;
+}
+.headerMenu{
+  margin-left: -95%;
+  margin-top: 1.5%;
+
+}
+.header-image{
+  margin-left: -87%;
+  margin-top: -3.5%;
+  
+}
+.header-keep{
+  margin-left: -78%;
+  margin-top: -5%;
+}
+.header-Searchbar{
+  display: flex;
+  width: 700px;
+  height: 50px;
+  border: 1px solid gray;
+  margin-top: -4.2%;
+  margin-left: 20%;
+  box-shadow: 0px 0px 5px grey;
+  background-clip: padding-box;
+  border-radius: 10px;
+  background-color: rgb(244, 244, 250);
+}
+.header-SearchIcon{
+  margin-top: 2%;
+  margin-left: 4%;
+  align-items: center;
+}
+.header-SearchInput{
+  width: 700px;
+  border: none;
+  border-color: antiquewhite;
+  font-size: medium;
+  background: transparent;
+  outline: none;
+  font-variant-ligatures: none;
+  margin: 10px auto;
+}
+.headerOther-icon{
+  padding-top: 55px;
+  width: 58%;
+  justify-content: space-between;
+  display: flex;
+}
+.headerRefresh-icon{
+  margin-left: 140%;
+  margin-top: -12%;
+  
+}
+.viewStream-icon{
+  margin-left: 2%;
+  margin-top: -12%;
+}
+.setting{
+  margin-left: 2%;
+  margin-top: -12%;
+}
+.apps{
+  margin-left: 6%;
+  margin-top: -12%;
+}
+.account-icon{
+  margin-left: 2%;
+  margin-top: -12%;
+}
