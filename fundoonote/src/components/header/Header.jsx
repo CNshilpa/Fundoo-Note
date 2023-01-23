@@ -8,6 +8,7 @@ import ViewStreamIcon from '@mui/icons-material/ViewStream';
 import SettingsIcon from '@mui/icons-material/Settings';
 import AppsIcon from '@mui/icons-material/Apps';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import {connect} from 'react-redux'
 
 function Header(props) {
 
@@ -19,7 +20,7 @@ function Header(props) {
     <div id='header-main'>
      <div className='headerMenu'><MenuIcon size="2.3em" onClick={menuClick}/></div>
      <div className='header-image'><img src={google}alt='' /></div>
-     <div className='header-keep'><h2 >Keep</h2></div>
+     <div className='header-keep'><h2 >{props.label}</h2></div>
      <div className="header-Searchbar">
       <SearchIcon className="header-SearchIcon" />
           <input
@@ -47,5 +48,10 @@ function Header(props) {
     
   )
 }
+const mapStateToProps = (state)=>{
+return {
+  label : state.drawerReducer.label
+}
+}
 
-export default Header
+export default connect(mapStateToProps)(Header)

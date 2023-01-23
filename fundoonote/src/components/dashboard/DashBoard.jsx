@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { useEffect } from 'react';
 import { getNoteListApi } from '../../services/DataService';
 import MiniDrawer from '../Drawer/Drawer';
+import PrimarySearchAppBar from '../fundooHeader/Header1';
 import Header from '../header/Header';
 import TakeNote1 from '../note/TakeNote1';
 import TakeNote2 from '../note/TakeNote2';
@@ -74,17 +75,20 @@ function DashBoard(props) {
     },[drawerNote])
     console.log(noteList,'fetching array')
 
+    const autoRefresh =()=>{
+        getNote()
+    }
     return (
         <div>
             
-            <Header listenToHeader ={listenToHeader}/> 
+            <PrimarySearchAppBar listenToHeader ={listenToHeader}/> 
             <MiniDrawer drawerToggle = {drawerToggle} listenToDrawer = {listenToDrawer}/>
             {
-                toggleNote ?  <TakeNote2 listenToTakeNoteTwo ={listenToTakeNoteTwo}/> : <TakeNote1  listenToTakeNoteOne = {listenToTakeNoteOne}/>  
+                toggleNote ?  <TakeNote2 listenToTakeNoteTwo ={listenToTakeNoteTwo} autoRefresh={autoRefresh}/> : <TakeNote1  listenToTakeNoteOne = {listenToTakeNoteOne}/>  
             }
-            <div style={{width : '90vw' , height : 'auto' ,display : 'flex', flexDirection:'row',flexWrap:'wrap',marginLeft:'110px',gap: '10px 20px',marginTop:'15px',justifyContent:'right'}}>
+            <div style={{width : '90vw' , height : 'auto' ,display : 'flex', flexDirection:'row',flexWrap:'wrap',marginLeft:'-40px',gap: '10px 20px',marginTop:'15px'}}>
             {
-                 noteList.map((note) =>(<TakeNote3  getNote={getNote} note = {note}/>))
+                 noteList.map((note) =>(<TakeNote3  getNote={getNote} note = {note} autorefresh={autoRefresh}/>))
             }
             </div>
         </div>

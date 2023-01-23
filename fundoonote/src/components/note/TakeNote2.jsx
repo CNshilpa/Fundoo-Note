@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import './TakeNote2.css'
 import NotificationsNoneOutlinedIcon from '@mui/icons-material/NotificationsNoneOutlined';
 import GroupAddOutlinedIcon from '@mui/icons-material/GroupAddOutlined';
-//import ColorLensOutlinedIcon from '@mui/icons-material/ColorLensOutlined';
+import InputBase from '@mui/material/InputBase';
 import ImageOutlinedIcon from '@mui/icons-material/ImageOutlined';
 import ArchiveOutlinedIcon from '@mui/icons-material/ArchiveOutlined';
 import MoreVertOutlinedIcon from '@mui/icons-material/MoreVertOutlined';
@@ -10,6 +10,8 @@ import PushPinOutlinedIcon from '@mui/icons-material/PushPinOutlined';
 import Button from '@mui/material/Button';
 import ColorPopper from '../colorpopper/ColorPopper';
 import { createNoteApi } from '../../services/DataService';
+import { Box, Paper } from '@mui/material';
+import { grey } from '@mui/material/colors';
 
 
 
@@ -35,6 +37,7 @@ function TakeNote2(props) {
         createNoteApi(noteobj)
         .then(res =>{
             console.log(res)
+            props.autoRefresh()
         })
         .catch(error =>
             {
@@ -42,7 +45,9 @@ function TakeNote2(props) {
             })
        
     }
-
+// const autoRefresh = ()=>{
+//     submitNoteTwo()
+// }
     const listenToColor = (colour) =>{
       setNoteobj(prevState => ({...prevState,color : colour }))
 
@@ -55,23 +60,42 @@ function TakeNote2(props) {
 
   }
   return (
-    <div className='takeNoteTwoMain'  style={{ backgroundColor : noteobj.color}}>
-      <div>
-    <input type='text' placeholder="Title" className='takeNoteTwo-title' onChange={takeTitle}/> 
-    <input type='text' placeholder="Take a note...." className='takeNoteTwo-takeNote' onChange={takeDescription}/>
-    <div className='takeNoteTwo-pin-icon'><PushPinOutlinedIcon/></div>
-    </div>
-    <div className='takeNoteTwo-icons'>
-        <div className='takeNoteTwo-notification-icon'><NotificationsNoneOutlinedIcon/></div>
-        <div className='takeNoteTwo-group-icon'> <GroupAddOutlinedIcon/></div>
-        <div className='takeNoteTwo-color-icon'><ColorPopper  listenToColor = {listenToColor}  action="create"/></div> 
-        <div className='takeNoteTwo-image-icons'> <ImageOutlinedIcon/></div>
-        <div className='takeNoteTwo-archive-icon'> <ArchiveOutlinedIcon  onClick={archiveNote}/></div>
-        <div className='takeNoteTwo-more-icon'> <MoreVertOutlinedIcon/></div>
-        <div className='takeNoteTwo-button'><Button onClick={submitNoteTwo}>Close</Button></div>
-    </div>
-    </div>
-  )
+    <Paper className='takeNoteTwoMain'  elevation={4} style={{ backgroundColor : noteobj.color}}>
+    <Box className='takeNoteTwo-titles'>
+        <InputBase
+            sx={{ ml: 1, flex: 1 }}
+            onChange={takeTitle} 
+            placeholder="Title"
+            inputProps={{ 'aria-label': 'Take a note....' }}
+        />
+        <PushPinOutlinedIcon sx={{ fontSize: 25, color: grey[900] }} />
+    </Box>
+    <Box className='takeNoteTwo-description'>
+    <InputBase
+        maxRows
+        sx={{ ml: 1, flex: 1 }}
+        onChange={takeDescription}
+        placeholder="Take a note...."
+        inputProps={{ 'aria-label': 'Take a note....' }}
+
+    />
+    
+    </Box>
+    <Box className='takeNoteTwo-icons' >
+        <NotificationsNoneOutlinedIcon sx={{ fontSize: 20, color: grey[900] }} />
+        <GroupAddOutlinedIcon sx={{ fontSize: 20, color: grey[900] }}  />
+        {/* <ColorLensOutlinedIcon sx={{ fontSize: 20, color: grey[900] }} /> */}
+        <ColorPopper  listenToColor = {listenToColor}  action="create"/>
+        <ImageOutlinedIcon sx={{ fontSize: 20, color: grey[900] }} />
+        <ArchiveOutlinedIcon sx={{ fontSize: 20, color: grey[900] }}  onClick={archiveNote}/>
+        <MoreVertOutlinedIcon sx={{ fontSize: 20, color: grey[900] }} />
+    </Box>
+    <Box className='takeNoteTwo-button'>
+    <Button  variant="text" sx={{color: grey[900]}} onClick={submitNoteTwo} >Close</Button>
+    </Box>
+    
+</Paper>
+);
 }
 
 export default TakeNote2

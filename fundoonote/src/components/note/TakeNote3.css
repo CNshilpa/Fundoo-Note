@@ -1,115 +1,271 @@
-.noteThree-Main{
+.noteThree-Main {
     width: 18vw;
     height: 20vh;
-    border: 1px solid gray;
     align-items: center;
-    /* margin-left: 25%;
-    margin-top: 5%; */
     box-shadow: 0px 0px 5px grey;
     border-radius: 10px;
     background-color: rgb(244, 244, 250);
     flex-direction: column;
     outline: none;
-}
-.noteThree-titles{
-    width: 700px;
-    border: none;
-    border-color: antiquewhite;
-    font-size: medium;
-    background: transparent;
-    outline: none;
-    font-variant-ligatures: none;
-    margin: 20px auto;
-    margin-left: -310px;
-}
-/* .takeNotes{
-    width: 700px;
-    border: none;
-    border-color: antiquewhite;
-    font-size: medium;
-    background: transparent;
-    outline: none;
-    font-variant-ligatures: none;
-    margin: 5px auto;
-    margin-left: -20px;
-} */
-.noteThree-icon{
-    justify-content: space-evenly;
-    flex-direction: row;
-    flex-wrap: wrap; 
-    width: 340px;  
-    margin-left: -20px;
-    margin-top: -35px;
-}
-.noteThree-pin-icons{
-    margin-top: -35%;
-    margin-left: 85%;
-}
-.noteThree-notification-icons{
-    margin-right: 80%;
-    margin-top: 23%;
-}
-.noteThree-group-icons{
-    margin-right: 55%;
-    margin-top: -9%;
-}
-.noteThree-color-icons{
-    margin-right: 5%;
-    margin-top: -8%; 
-}
-.noteThree-image-icons1{
-    margin-right: 30%;
-    margin-top: -8.5%;  
-}
-.noteThree-archive-icons{
-    margin-right: -20%;
-    margin-top: -9%; 
-}
-.noteThree-more-icons{
-    margin-right: -40%;
-    margin-top: -9%; 
-}
-
-.child-menu{
-    top: 20px;
-    flex-direction: row;
-    align-items: flex-start; 
-    position: relative;
-    justify-content: space-evenly;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: space-between;
     align-content: space-between;
-    width: 150px;
+    align-items: center;
+    padding: 10px;
+    box-shadow: 2px 2px 2px 1px #888888;
+    border-radius: 10px;
+    position: relative;
+    top: 30px;
+    left: 350px;
+}
+
+.noteThree-subMain {
+    width: 100%;
+    height: 80%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
 
 
-} 
-.subChild-title{
-    margin-top: -18px;
 }
-.child-notification{
-    margin-left: -20px;
-    margin-top: 22%;
+
+.noteThree-title {
+    width: 80%;
+    height: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: flex-start;
+
 }
-.child-group{
-    margin-left: 22px;
-    margin-top: -20%;
+
+.noteThree-description {
+    width: 80%;
+    display: flex;
+    left: 10px;
 }
-.child-color{
-    margin-left: 102px;
-    margin-top: -19%;
-      
+
+.noteThree-pin {
+    width: 20%;
+    position: relative;
+    bottom: 24px;
+    left: 10px;
 }
-.child-image{
-    margin-left: 62px;
-    margin-top: -20%; 
+
+.noteThree-icons {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    right: 230px;
+    position: relative;
+    justify-content: space-between;
+    align-content: space-between;
+    top: 90px;
+    row-gap: 5px;
 }
-.child-archive{
-    margin-left: 140px;
-    margin-top: -21%; 
+
+.Childnoteone {
+
+    width: 15vw;
+    height: 9vh;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: space-between;
+    align-content: space-between;
+    align-items: center;
+    padding: 10px;
+    margin-bottom: 20px;
+    position: relative;
+/* border: 1px solid green; */
 }
-.child-more{
-    margin-left: 180px;
-    margin-top: -20%; 
-} 
-.child-button{
-    margin-left: 190%;
-    margin-top: -20%; 
+
+.Childnotetwo {
+    width: 100%;
+    height: 80%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+
+}
+
+.Childnotethree {
+    left: -35px;
+    position: relative;
+    bottom: 30px;
+
+}
+
+
+.Childnotefour {
+    width: 15%;
+    position: relative;
+    bottom: 100px;
+    left: 310px;
+}
+
+.Childicon {
+    width: 48%;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    margin-left: -200%;
+    position: relative;
+    justify-content: space-between;
+    align-content: space-between;
+    top: 80px;
+
+}
+
+.close {
+    width: 20%;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    margin-left: -250%;
+    position: relative;
+    justify-content: space-between;
+    align-content: space-between;
+    top: -10px;
+    left: 240px;
+
+
+
+}
+
+@media only screen and (min-width:320px) and (max-width:480px) {
+    .noteThree-Main {
+        width: 86%;
+        height: 21vh;
+        left: 40%;
+    }
+
+    .noteThree-icons {
+        align-items: flex-start;
+        left: -100%;
+        row-gap: 3px;
+        top: 85%;
+    }
+
+}
+
+@media only screen and (min-width:481px) and (max-width:768px) {
+    .noteThree-Main {
+        width: 85vw;
+        height: 21vh;
+        left: 25%;
+    }
+
+    .noteThree-icons {
+        align-items: flex-start;
+        left: 1%;
+        row-gap: 2px;
+        top: 10%;
+    }
+
+    .noteThree-pin {
+        left: 5%;
+        top: -30%;
+    }
+}
+
+@media only screen and (min-width:769px) and (max-width:1024px) {
+    .noteThree-Main {
+        width: 35vw;
+        height: 15vh;
+        left: 25%;
+    }
+
+    .noteThree-icons {
+        align-items: flex-start;
+        left: -100%;
+        row-gap: 2px;
+        top: 90%;
+    }
+
+    .noteThree-pin {
+        left: 5%;
+        top: -30%;
+    }
+}
+
+@media only screen and (min-width:320px) and (max-width:480px) {
+    .Childnoteone {
+        width: 25%;
+
+    }
+
+    .Childicon {
+        top: 265%;
+        width: 110%;
+        left: 60%;
+    }
+
+    .Childnotethree {
+        left: 15%;
+        bottom: 30%;
+        top: -180%;
+    }
+
+    .Childnotefour {
+        left: 450%;
+    }
+
+    .close {
+        top: -20%;
+        left: 280%;
+    }
+
+}
+
+@media only screen and (min-width:481px) and (max-width:768px) {
+    .Childnoteone {
+        width: 15vw;
+    }
+
+    .Childicon {
+        top: 180%;
+        width: 168%;
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: space-between;
+        align-content: space-between;
+    }
+
+    .Childnotefour {
+        left: 310px;
+    }
+
+    .close {
+        top: -20%;
+        left: 280%;
+    }
+}
+
+@media only screen and (min-width:769px) and (max-width:1024px) {
+    .Childnoteone {
+        width: 15vw;
+    }
+
+    .Childicon {
+        top: 160%;
+        width: 108%;
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: space-between;
+        align-content: space-between;
+    }
+
+    .Childnotefour {
+        left: 300px;
+        top: -155%;
+    }
+
+    .close {
+        top: -10px;
+        left: 240px;
+    }
 }

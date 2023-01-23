@@ -3,6 +3,9 @@ import './Signin.css'
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import { loginApi } from '../../services/UserService';
+import { useNavigate } from 'react-router-dom';
+import { Paper } from '@mui/material';
+import { Box } from '@mui/system';
 
 const emailRegex = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/;
 const passwordRegex = /^(?=.*[A-Z])(?=.*[0-9])(?=.*[@#$%^&-+=()])([a-zA-Z0-9]*).{8,}$/;
@@ -25,6 +28,8 @@ function SignIn() {
       setsignInObj((prevState) =>({...prevState,password : event.target.value}))
       
   }
+
+  const navigate = useNavigate()
   const submit = () =>
   {
       console.log("submit",signInObj)
@@ -50,37 +55,45 @@ function SignIn() {
 
       if(emailText === true && passwordText === true)
       {
-          loginApi(signInObj).then((response) =>{console.log(response); localStorage.setItem('token', response.data.id)}).catch((error) => {console.log(error)})
+          loginApi(signInObj).then((response) =>{console.log(response); 
+            localStorage.setItem('token', response.data.id);
+            navigate('/dashboard')
+          })
+            .catch((error) => {console.log(error)})
+
       }
   }
+  const createAccount = () =>{
+    navigate('/signup')
+  }
   return (
-    <div className='main' id='mainId'>
-      <div className='image'>
+    <Paper className='main' id='mainId'>
+      <Box className='image'>
         <img src="https://download.logo.wine/logo/Google/Google-Logo.wine.png"alt="" width="120" height="80" />
-      </div>
-      <div className='signin'>Sign In</div>
-      <div className='google'>Use your Google Account</div>
-      <div className='email'>
+      </Box>
+      <Box className='signin'>Sign In</Box>
+      <Box className='google'>Use your Google Account</Box>
+      <Box className='email'>
         <TextField
           fullWidth
           id="outlined-required"
           label="Email" size='small' onChange={takeEmail}
           error={regexObj.emailBorder} helperText={regexObj.emailHelper}/>
-      </div>
-      <div className='pass'>
+      </Box>
+      <Box className='pass'>
         <TextField type='password'
           fullWidth
           id="outlined-required"
           label="Password" size='small' onChange={takePassword}
           error={regexObj.passwordBorder} helperText={regexObj.passwordHelper}/>
-      </div> 
-      <div className='button'><Button >Forgot password</Button></div>
+      </Box> 
+      <Box className='button'><Button >Forgot password</Button></Box>
         <p className='p'>Not your computer? Use Guest mode to sign in privately</p>
-        <div className='learn'>
-        <Button>Learn more</Button></div>
-      <div className='btn2'><Button >Create account</Button></div>
-      <div className='btn3'><Button variant="contained" onClick={submit} >Submit</Button></div>
-    </div>
+        <Box className='learn'>
+        <Button>Learn more</Button></Box>
+      <Box className='btn2'><Button onClick={createAccount}>Create account</Button></Box>
+      <Box className='btn3'><Button variant="contained" onClick={submit} >Submit</Button></Box>
+    </Paper>
   )
 }
 

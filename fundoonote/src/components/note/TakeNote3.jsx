@@ -4,6 +4,9 @@ import NotificationsNoneOutlinedIcon from '@mui/icons-material/NotificationsNone
 import GroupAddOutlinedIcon from '@mui/icons-material/GroupAddOutlined';
 //import ColorLensOutlinedIcon from '@mui/icons-material/ColorLensOutlined';
 import DeleteIcon from '@mui/icons-material/Delete';
+import { grey } from '@mui/material/colors';
+import UndoOutlinedIcon from '@mui/icons-material/UndoOutlined';
+import RedoOutlinedIcon from '@mui/icons-material/RedoOutlined';
 import ArchiveOutlinedIcon from '@mui/icons-material/ArchiveOutlined';
 import MoreVertOutlinedIcon from '@mui/icons-material/MoreVertOutlined';
 import PushPinOutlinedIcon from '@mui/icons-material/PushPinOutlined';
@@ -13,10 +16,11 @@ import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import { InputBase } from '@mui/material';
 import { useState } from 'react';
+import Button from '@mui/material/Button';
 
 
 function TakeNote3(props) {
-  const [inputValue, setInputValue] = useState({noteId : '',title :'', description :''})
+  const [inputValue, setInputValue] = useState({ noteId: '', title: '', description: '' })
   const style = {
     position: 'absolute',
     top: '50%',
@@ -29,119 +33,125 @@ function TakeNote3(props) {
     p: 5,
   };
   const [open, setOpen] = React.useState(false);
-  const handleOpen = (noteDetail) =>{
+  const handleOpen = (noteDetail) => {
     console.log(noteDetail)
     setOpen(true);
-    setInputValue({noteId : noteDetail.id ,title :noteDetail.title , description :noteDetail.description})
-  } 
- 
-  const handleClose = () => setOpen(false);  
+    setInputValue({ noteId: noteDetail.id, title: noteDetail.title, description: noteDetail.description })
+  }
+
+  const handleClose = () => setOpen(false);
   console.log(props.note)
 
-  const colorUpdate = ()=>
-  {
-      props.getNote()
+  const colorUpdate = () => {
+    props.getNote()
 
   }
-  const colorUpdateOne = ()=>
-  {
-      props.getNote()
+  const colorUpdateOne = () => {
+    props.getNote()
 
   }
-  const updateArchive = (id) =>
-  {
-      let input = {noteIdList : [id], isArchived : true}
-      updateArchiveApi(input).then ( res =>
-          {
-              console.log(res)
-          }) 
-          .catch(error =>
-              {
-                  console.log(error)
-              })
-
-  }
-  const deleteObj =(id)=>
-  {
-    let input = {noteIdList : [id], isDeleted : true}
-     updateDeleteApi(input).then ( res =>
-          {
-              console.log(res)
-          }) 
-          .catch(error =>
-              {
-                  console.log(error)
-              })
-
-  }
-  const takeTitle = (e) =>
-    {
-     setInputValue(prevState => ({...prevState,title : e.target.value}))
-    }
-
-    const takeDescription = (e) =>
-    {
-       setInputValue(prevState => ({...prevState,description : e.target.value}))
-
-    }
- const UpdateNote = () =>
- {
-  setOpen(false)
-  updateNoteApi(inputValue)
-  .then(res =>{
-    console.log(res)
-})
-.catch(error =>
-    {
-        console.log(error)
+  const updateArchive = (id) => {
+    let input = { noteIdList: [id], isArchived: true }
+    updateArchiveApi(input).then(res => {
+      console.log(res)
     })
+      .catch(error => {
+        console.log(error)
+      })
 
- }
+  }
+  const deleteObj = (id) => {
+    let input = { noteIdList: [id], isDeleted: true }
+    updateDeleteApi(input).then(res => {
+      console.log(res)
+    })
+      .catch(error => {
+        console.log(error)
+      })
+
+  }
+  const takeTitle = (e) => {
+    setInputValue(prevState => ({ ...prevState, title: e.target.value }))
+  }
+
+  const takeDescription = (e) => {
+    setInputValue(prevState => ({ ...prevState, description: e.target.value }))
+
+  }
+  const UpdateNote = () => {
+    setOpen(false)
+    updateNoteApi(inputValue)
+      .then(res => {
+        console.log(res)
+      })
+      .catch(error => {
+        console.log(error)
+      })
+
+  }
   return (
-        <div className='noteThree-Main'  style={{ backgroundColor: props.note.color }} >
-          <div onClick={() => handleOpen(props.note)} className='noteThree-titles'>
-        {/* <input type='text' placeholder='Title' className='titles' /> 
-       <input type='text' placeholder='Take a note...' className='takeNotes' /> */}
-       <p>{props.note.title}</p>
-       <p> {props.note.description}</p>
-       </div>
-        <div className='noteThree-pin-icons'><PushPinOutlinedIcon/></div>
-        <div className='noteThree-icon'>
-        <div className='noteThree-notification-icons'><NotificationsNoneOutlinedIcon/></div>
-        <div className='noteThree-group-icons'> <GroupAddOutlinedIcon/></div>
-        {/* <div className='color-icons'><ColorLensOutlinedIcon/></div>  */}
-        <div  className='noteThree-color-icons'><ColorPopper action="update" id={props.note.id} colorUpdate = {colorUpdate}/></div>
-        <div className='noteThree-image-icons1'> <DeleteIcon onClick={ () => deleteObj(props.note.id)}/></div>
-        <div className='noteThree-archive-icons'> <ArchiveOutlinedIcon onClick={ () => updateArchive(props.note.id)} /></div>
-        <div className='noteThree-more-icons'> <MoreVertOutlinedIcon/></div>
-        </div>
-     
+    <paper className='noteThree-Main' style={{ backgroundColor: props.note.color }} >
+      <Box className='noteThree-subMain'>
+        <Box className='noteThree-title' onClick={() => handleOpen(props.note)}>
+          <p>{props.note.title}</p>
+          </Box>
+          <Box className='noteThree-description'>
+          <p>{props.note.description}</p>
+        </Box>
+        <Box className='noteThree-pin'>
+          <PushPinOutlinedIcon sx={{ fontSize: 25, color: grey[900] }} />
+        </Box>
+      </Box>
+      <Box className='noteThree-icons'>
+        <NotificationsNoneOutlinedIcon sx={{ fontSize: 20, color: grey[900] }} />
+        <GroupAddOutlinedIcon sx={{ fontSize: 20, color: grey[900] }} />
+        {/* <ColorLensOutlinedIcon sx={{ fontSize: 20, color: grey[900] }} /> */}
+        <ColorPopper action="update" id={props.note.id} colorUpdate={colorUpdate} />
+
+        {/* <ImageOutlinedIcon sx={{ fontSize: 20, color: grey[900] }} /> */}
+        <DeleteIcon sx={{ fontSize: 20, color: grey[900] }} onClick={() => deleteObj(props.note.id)} />
+        <ArchiveOutlinedIcon sx={{ fontSize: 20, color: grey[900] }} onClick={() => updateArchive(props.note.id)} />
+        <MoreVertOutlinedIcon sx={{ fontSize: 20, color: grey[900] }} />
+
+      </Box>
+
+
       <Modal
         open={open}
         onClose={handleClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description">
         <Box sx={style} style={{ backgroundColor: props.note.color }}>
-          <div className='subChild-title'>
-          <InputBase defaultValue={inputValue.title} onChange={takeTitle}
-          /> 
-          <InputBase defaultValue={inputValue.description} onChange={takeDescription}
-          />
-          </div>
-           <div style={{marginTop:-80, marginLeft:390}}><PushPinOutlinedIcon/></div>
-           <div className='child-menu'>
-        <div className='child-notification'><NotificationsNoneOutlinedIcon/></div>
-        <div className='child-group'> <GroupAddOutlinedIcon/></div>
-        <div  className='child-color'><ColorPopper action="update" id={props.note.id} colorUpdateOne = {colorUpdateOne} /></div>
-        <div className='child-image'> <DeleteIcon onClick={ () => deleteObj(props.note.id)}/></div>
-        <div className='child-archive'> <ArchiveOutlinedIcon onClick={ () => updateArchive(props.note.id)} /></div>
-        <div className='child-more'> <MoreVertOutlinedIcon/></div>
-        
-        <div className='child-button'><button onClick={UpdateNote}>Close </button></div>
-        </div>
-        </Box>
-      </Modal>
-    </div>
+          <Box className='Childnoteone' >
+            <Box className='Childnotetwo' >
+              <Box className='Childnotethree' >
+                <InputBase onChange={takeTitle} defaultValue={inputValue.title} />
+                <InputBase onChange={takeDescription} defaultValue={inputValue.description} />
+              </Box>
+
+              <Box className='Childnotefour'>
+                <PushPinOutlinedIcon sx={{ fontSize: 25, color: grey[900] }} />
+              </Box>
+            </Box>
+
+
+            <Box className='Childicon'>
+              <NotificationsNoneOutlinedIcon sx={{ fontSize: 20, color: grey[900] }} />
+              <GroupAddOutlinedIcon sx={{ fontSize: 20, color: grey[900] }} />
+              <ColorPopper action="update" id={props.note.id} colorUpdateOne={colorUpdateOne} />
+              <DeleteIcon sx={{ fontSize: 20, color: grey[900] }} />
+              <ArchiveOutlinedIcon sx={{ fontSize: 20, color: grey[900] }} />
+              <MoreVertOutlinedIcon sx={{ fontSize: 20, color: grey[900] }} />
+              <UndoOutlinedIcon sx={{ fontSize: 20, color: grey[900] }} />
+              <RedoOutlinedIcon sx={{ fontSize: 20 }} />
+              <Box className='close'>
+                <Button variant="text" sx={{ color: grey[900] }} onClick={UpdateNote}>Close</Button>
+              </Box>
+            </Box>
+          </Box>
+        </Box >
+      </Modal >
+    </paper >
   )
 }
 

@@ -8,6 +8,9 @@ import DashBoard from './components/dashboard/DashBoard';
 import SignIn from './components/signin/Signin';
 import SignUp from './components/signup/SignUp';
 import Header1 from './components/fundooHeader/Header1'
+import { Provider } from 'react-redux';
+import store from './components/redux/store';
+import RouterOne from './components/router/router';
 
 function App() {
   return (
@@ -18,8 +21,12 @@ function App() {
            {/* <TakeNote1/> 
            <TakeNote2/>
            <TakeNote3/>   */}
-          <DashBoard/>   
-         {/* <Header1/> */}
+            <Provider store={store}>
+           {/* <DashBoard/>  */}
+            <RouterOne/>
+           </Provider>    
+           
+           {/* <Header1/>   */}
       {/* <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>

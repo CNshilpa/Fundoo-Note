@@ -1,4 +1,4 @@
-.main {
+.signup-main {
     width: 55vw;
     height: 100vh;
     border: 1px solid rgb(68, 67, 67);
@@ -8,81 +8,81 @@
     border-radius: 10px;
     border-color:rgba(26, 24, 24, 0.185) ;
 }
-.image{
+.signup-image{
     display: flex;
     margin-left: 20px;
    
 } 
-.google{
+.signup-google{
     margin-left:  -430px;
     margin-top:  -10px;
     font-size: 20px;
    font-weight: bolder 90;
    font-family: Arial, Helvetica, sans-serif;
 }
-.name{
+.signup-name{
     margin-left:  -250px;
     margin-top:  30px;
     justify-content: space-between flex-start;
     row-gap: 110px;
 }
-.fname{
+.signup-fname{
    
     justify-content: space-between left ;
     width: 215px;
     height: 20px;
     box-sizing: 30%;
 }
-.lname{
+.signup-lname{
     
     gap: 20px 20px;
     width: 215px;
     justify-content: space-between left ;
     left: 20px;
 }
-.gmail{
+.signup-gmail{
    margin-left:  35px;
    margin-top:  30px;
     width:450px;
     font-family: roboto,"Noto Sans Myanmar UI",arial,sans-serif;
 }
-.p{
+.signup-p{
    margin-left:  -180px;
     margin-top:  10px;
     width:650px;
 }
-.button{
+.signup-button{
     margin-top:  20px;
     margin-left:  -365px;
     font-weight: bold 80%;
     font-size: small;
 }
-.password{
+.signup-password{
     width: 220px;
     height: 20px;
     box-sizing: 30%;
     margin-top:  20px;
     margin-left:  30px;
 }
-.pconfirm{
+.signup-pconfirm{
     width: 220px;
     height: 20px;
     box-sizing: 30%;
   margin-top:  -20px;
    margin-left:  270px;
 } 
-.p1{
+.signup-p1{
    margin-left: 30px;
    margin-top:   20px;
     width:550px;
     font-size: 15px;
     text-align: start;
 }
-.checkbox{
+.signup-checkbox{
     margin-left:  -530px;
    margin-top:   30px;
 }
-.button1{
+.signup-button1{
    margin-left:  -570px;
    margin-top:  50px;
     font-size: 15px;
@@ -96,7 +96,7 @@
     font-size: 15px;
    font-weight: bold;
 } */
-.button2{
+.signup-button2{
    
    margin-left:  150px;
     margin-top:  -40px;
@@ -106,13 +106,13 @@
     color: rgb(90, 161, 163);
    
 }
-.image2{
+.signup-image2{
     display: flex;
     margin-top:  -510px;
    margin-left:  500px;
 
 }
-.p2{
+.signup-p2{
    margin-top:  -70px;
    margin-left: 500px;
     font-size: 17px;

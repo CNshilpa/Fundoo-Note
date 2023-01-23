@@ -1,0 +1,12 @@
+.header-box {
+    width: 100vw;
+
+}
+
+
+@media only screen and (min-width:320px) and (max-width:480px) {
+    .header-box {
+        width: 100%;
+    }
+
+}

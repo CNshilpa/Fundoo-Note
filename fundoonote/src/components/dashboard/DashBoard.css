@@ -1,3 +1,10 @@
-.dashBoardOne{
-   display: flex;
-}
+/* .dashBoardOne{
+ width: 90vw;
+   height :auto;
+   display : flex;
+   flex-direction: row;
+   flex-wrap: wrap;
+   /* margin-left:-40px; */
+  /* gap: 10px 20px;
+  margin-top:15px;
+} */ 

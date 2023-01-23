@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { styled, alpha } from '@mui/material/styles';
+import './Header1.css'
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -19,13 +20,14 @@ import AppsIcon from '@mui/icons-material/Apps';
 import SettingsIcon from '@mui/icons-material/Settings';
 import RefreshIcon from '@mui/icons-material/Refresh';
 import google from '../img/keep_2020q4_48dp.png'
+import { connect } from 'react-redux';
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
   borderRadius: theme.shape.borderRadius,
-  backgroundColor: alpha(theme.palette.common.white, 0.15),
+  backgroundColor: alpha(theme.palette.common.black, 0.15),
   '&:hover': {
-    backgroundColor: alpha(theme.palette.common.white, 0.25),
+    backgroundColor: alpha(theme.palette.common.black, 0.25),
   },
   marginRight: theme.spacing(2),
   marginLeft: 0,
@@ -47,7 +49,7 @@ const SearchIconWrapper = styled('div')(({ theme }) => ({
 }));
 
 const StyledInputBase = styled(InputBase)(({ theme }) => ({
-  color: 'inherit',
+  color: 'black',
   '& .MuiInputBase-input': {
     padding: theme.spacing(1, 1, 1, 0),
     // vertical padding + font size from searchIcon
@@ -60,7 +62,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-export default function PrimarySearchAppBar() {
+ function PrimarySearchAppBar(props) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
 
@@ -84,6 +86,10 @@ export default function PrimarySearchAppBar() {
     setMobileMoreAnchorEl(event.currentTarget);
   };
 
+  const menuClick = () =>
+  {
+    props.listenToHeader()
+  }
   const menuId = 'primary-search-account-menu';
   const renderMenu = (
     <Menu
@@ -124,7 +130,7 @@ export default function PrimarySearchAppBar() {
       onClose={handleMobileMenuClose}
     >
          <MenuItem marginRight="80px">
-        <IconButton size="large" color="inherit">
+        <IconButton size="large" color="black">
           <Badge>
           <RefreshIcon />
           </Badge>
@@ -132,7 +138,7 @@ export default function PrimarySearchAppBar() {
         <p>Refresh</p>
       </MenuItem>
         <MenuItem>
-        <IconButton size="large" color="inherit">
+        <IconButton size="large" color="black">
           <Badge>
           <ViewStreamIcon />
           </Badge>
@@ -140,7 +146,7 @@ export default function PrimarySearchAppBar() {
         <p>ViewStream</p>
       </MenuItem>
       <MenuItem>
-        <IconButton size="large" color="inherit">
+        <IconButton size="large" color="black">
           <Badge>
           <SettingsIcon />
           </Badge>
@@ -150,7 +156,7 @@ export default function PrimarySearchAppBar() {
       <MenuItem>
         <IconButton
           size="large"
-          color="inherit"
+          color="black"
         >
           <Badge>
             <NotificationsIcon />
@@ -164,7 +170,7 @@ export default function PrimarySearchAppBar() {
           aria-label="account of current user"
           aria-controls="primary-search-account-menu"
           aria-haspopup="true"
-          color="inherit"
+          color="black"
         >
           <AccountCircle />
         </IconButton>
@@ -174,17 +180,17 @@ export default function PrimarySearchAppBar() {
   );
 
   return (
-    <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
-        <Toolbar>
+    <Box sx={{ flexGrow: 1, zIndex:1}} className='header-box'>
+      <AppBar position="static" style= {{backgroundColor:'white'  }}>
+        <Toolbar  className='header-toolbar'>
           <IconButton
             size="large"
             edge="start"
-            color="inherit"
+            color="black"
             aria-label="open drawer"
             sx={{ mr: 2 }}
           >
-            <MenuIcon />
+            <MenuIcon onClick={menuClick}/>
           </IconButton>
           <Box style={{ display:'flex', marginLeft:'-20px'}}>
           <img src={google}alt='' />
@@ -194,9 +200,9 @@ export default function PrimarySearchAppBar() {
             noWrap
             component="div"
             marginLeft="10px"
-            sx={{ display: { xs: 'none', sm: 'block' } }}
+            sx={{ display: { xs: 'none', sm: 'block', color:'black' } }}
           >
-           Keep
+           {props.label}
           </Typography>
           <Search>
             <SearchIconWrapper>
@@ -211,17 +217,17 @@ export default function PrimarySearchAppBar() {
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
             <Box sx={{ marginRight:'50px'}}>
-          <IconButton size="large" color="inherit" >
+          <IconButton size="large" color="black" >
               <Badge>
               <RefreshIcon />
               </Badge>
             </IconButton>
-          <IconButton size="large" color="inherit">
+          <IconButton size="large" color="black">
               <Badge>
               <ViewStreamIcon />
               </Badge>
             </IconButton>
-            <IconButton size="large" color="inherit">
+            <IconButton size="large" color="black">
               <Badge>
                 <SettingsIcon />
               </Badge>
@@ -229,7 +235,7 @@ export default function PrimarySearchAppBar() {
             </Box>
             <IconButton
               size="large"
-              color="inherit"
+              color="black"
             >
               <Badge>
               <AppsIcon />
@@ -242,7 +248,7 @@ export default function PrimarySearchAppBar() {
               aria-controls={menuId}
               aria-haspopup="true"
               onClick={handleProfileMenuOpen}
-              color="inherit"
+              color="black"
             >
               <AccountCircle />
             </IconButton>
@@ -254,7 +260,7 @@ export default function PrimarySearchAppBar() {
               aria-controls={mobileMenuId}
               aria-haspopup="true"
               onClick={handleMobileMenuOpen}
-              color="inherit"
+              color="black"
             >
               <MoreIcon />
             </IconButton>
@@ -266,3 +272,10 @@ export default function PrimarySearchAppBar() {
     </Box>
   );
 }
+const mapStateToProps = (state)=>{
+    return {
+      label : state.drawerReducer.label
+    }
+    }
+    
+    export default connect(mapStateToProps)(PrimarySearchAppBar)

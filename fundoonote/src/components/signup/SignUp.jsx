@@ -6,6 +6,7 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 import accountpic from '../img/account.svg'
 import { registerApi } from '../../services/UserService';
+import { useNavigate } from 'react-router-dom';
 
 
 const emailRegex = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/;
@@ -35,7 +36,7 @@ function SignUp() {
       setsignUpObj((prevState) =>({...prevState,Name : event.target.value}))    
   }
   
-
+  const navigateOne = useNavigate()
   const submit = () =>
   {
       console.log("submit",signUpObj)
@@ -69,45 +70,49 @@ function SignUp() {
       if(NameText === true && emailText === true && passwordText === true)
       {
           registerApi(signUpObj).then((response) =>{console.log(response)}).catch((error) => {console.log(error)})
+navigateOne('/')
       }
     }
+    const signInInstead = ()=>{
+      navigateOne('/')
+    }
   return (
-    <div className='main'>
+    <div className='signup-main'>
       <div>
-        <div className='image'><img src="https://download.logo.wine/logo/Google/Google-Logo.wine.png"alt="" width="120" height="80"/></div>
-        <div className='google'>Create Your Google Account</div>
-        <div className='name'><TextField className='fname'
+        <div className='signup-image'><img src="https://download.logo.wine/logo/Google/Google-Logo.wine.png"alt="" width="120" height="80"/></div>
+        <div className='signup-google'>Create Your Google Account</div>
+        <div className='signup-name'><TextField className='signup-fname'
           id="outlined-required"
           label="First name" size='small' onChange={takeName}
           error={regexObj.NameBorder} helperText={regexObj.NameHelper}/> 
-          <TextField className='lname'
+          <TextField className='signup-lname'
           id="outlined-required"
           label="Last name" size='small' onChange={takeName}
           error={regexObj.NameBorder} helperText={regexObj.NameHelper}/></div>
-          <div className='gmail'><TextField fullWidth
+          <div className='signup-gmail'><TextField fullWidth
            position="end" placeholder='@gmail.com'
           id="outlined-required"
           label="Username" size='small' onChange={takeEmail}
           error={regexObj.emailBorder} helperText={regexObj.emailHelper}>
-          </TextField><p className='p'>You can use letters, numbers & periods</p>
+          </TextField><p className='signup-p'>You can use letters, numbers & periods</p>
           </div>
-          <div className='button'><Button>Use my current email address instead</Button></div>
-          <div className='password'><TextField type='password' 
+          <div className='signup-button'><Button>Use my current email address instead</Button></div>
+          <div className='signup-password'><TextField type='password' 
           id="outlined-required"
           label="Password" size='small' onChange={takePassword}
           error={regexObj.passwordBorder} helperText={regexObj.passwordHelper}/> </div>
-         <div className='pconfirm'><TextField type='password' 
+         <div className='signup-pconfirm'><TextField type='password' 
           id="outlined-required"
           label="Confirm" size='small' onChange={takePassword}
           error={regexObj.passwordBorder} helperText={regexObj.passwordHelper}/>
           </div>
-          <p className='p1'>Use 8 or more characters with a mix of letters , numbers & symbols</p>
-    <div className='checkbox'><FormControlLabel control={<Checkbox defaultChecked />} label="Show password" /></div>
-    <div className='button1'><Button>Sign in instead</Button></div>
-    <div className='button2'><Button variant="contained" onClick={submit}>Next</Button></div>
+          <p className='signup-p1'>Use 8 or more characters with a mix of letters , numbers & symbols</p>
+    <div className='signup-checkbox'><FormControlLabel control={<Checkbox defaultChecked />} label="Show password" /></div>
+    <div className='signup-button1'><Button onClick={signInInstead}>Sign in instead</Button></div>
+    <div className='signup-button2'><Button variant="contained" onClick={submit}>Next</Button></div>
     </div>
-    <div className='image2'><img src={accountpic} alt='' width='250px' height='350px' /></div>
-    <p className='p2'>One account. All of Google working for you.</p>
+    <div className='signup-image2'><img src={accountpic} alt='' width='250px' height='350px' /></div>
+    <p className='signup-p2'>One account. All of Google working for you.</p>
     </div>
   )
 }
